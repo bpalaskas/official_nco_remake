@@ -1,0 +1,149 @@
+/* Reset some default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f4f4f4; /* Light grey background for contrast */
+}
+
+/* Header styles */
+header {
+    background-color: #000; /* Black background for the header */
+    color: #fff; /* White text color */
+    padding: 1rem;
+
+    background-image: url("{{ url_for('static', filename='bg1.jpeg') }}"); /* Background image */
+    background-size: cover; /* Cover the entire header area */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+}
+
+header h1 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0.5rem 1rem;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+nav a:hover {
+    color: #e03c31; /* Deep red color on hover */
+}
+
+/* Main content styles */
+main {
+    padding: 1rem;
+}
+
+/* Section styles */
+section {
+    background-color: #fff; /* White background for sections */
+    border: 1px solid #ddd; /* Light grey border */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+}
+
+section h2 {
+    color: #e03c31; /* Deep red color for headings */
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+section p {
+    margin-bottom: 1rem;
+}
+
+button {
+    background-color: #e03c31; /* Deep red button */
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 0.3rem;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #c42c27; /* Darker red on hover */
+}
+
+/* Image styles */
+section img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px; /* Rounded corners for images */
+    margin-bottom: 1rem;
+}
+
+/* Footer styles */
+footer {
+    background-color: #000; /* Black background for the footer */
+    color: #fff; /* White text color */
+    text-align: center;
+    padding: 1rem;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+/* Media Queries for responsiveness */
+
+/* Tablet view (min-width: 600px) */
+@media (min-width: 600px) {
+    nav a {
+        font-size: 1rem;
+    }
+
+    header h1 {
+        font-size: 2rem;
+    }
+}
+
+/* Desktop view (min-width: 992px) */
+@media (min-width: 992px) {
+    main {
+        padding: 2rem;
+    }
+
+    section {
+        margin-bottom: 2rem;
+        padding: 2rem;
+    }
+
+    section h2 {
+        font-size: 1.8rem;
+    }
+
+    nav {
+        justify-content: flex-start;
+    }
+}
+.general-container{
+   
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        justify-content: center; /* Center-aligns the cards */
+    
+}

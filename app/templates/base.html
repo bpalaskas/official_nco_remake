@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="{{ url_for('static', filename='carousel.js') }}" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>New Christian Order</title>
+</head>
+<body>
+    <style>
+  .nav-logo {
+    width: 40px; /* Set the width of the image */
+    height: auto; /* Maintain aspect ratio */
+    margin-left: auto; /* Push the image to the right */
+    display: block; /* Ensure image is displayed as a block element */
+}
+
+/* Hide the image on mobile devices */
+@media (max-width: 768px) {
+    .nav-logo {
+        display: none; /* Hide the image on screens smaller than 768px */
+    }
+}
+    </style>
+    <header>
+        <nav>
+            <a href="{{ url_for('main.index') }}">Home</a>
+            <a href="{{ url_for('main.store') }}">
+                <span style="color:red">
+                    Store</a>
+                </span>
+            <a href="{{ url_for('main.mission') }}">Mission</a>
+            <a href="{{ url_for('main.members') }}">Members</a>
+            <a href="{{ url_for('main.join') }}">Join</a>
+            <a href="https://cloud.newchristianorder.org">Login</a>
+            <img src="{{ url_for('static', filename='logo.webp') }}" alt="Logo" class="nav-logo">
+        </nav>
+    </header>
+    <main>
+        {% block content %}{% endblock %}
+
+   
+        
+    </main>
+
+
+    <footer>
+<a href="{{url_for('main.index')}}"><img src="{{url_for('static',filename='logo.webp')}}" height="40px" width="auto" alt=""></a>    </footer>
+</body>
+</html>

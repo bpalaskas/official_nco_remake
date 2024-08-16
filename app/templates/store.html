@@ -1,0 +1,202 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+<style>
+    /* Reset some default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f4f4f4; /* Light grey background for contrast */
+}
+
+/* Header styles */
+header {
+    background-color: #000; /* Black background for the header */
+    color: #fff; /* White text color */
+    padding: 1rem;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0.5rem 1rem;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+nav a:hover {
+    color: #e03c31; /* Deep red color on hover */
+}
+
+/* Main content styles */
+main {
+    padding: 1rem;
+}
+
+/* Store section styles */
+#store {
+    padding: 2rem;
+}
+
+#store h2 {
+    color: #e03c31; /* Deep red color for headings */
+    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
+}
+
+/* Product container styles */
+.product-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center; /* Center-aligns the cards */
+}
+
+/* Product card styles */
+.product-card {
+    background-color: #fff; /* White background for the card */
+    border: 1px solid #ddd; /* Light grey border */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    width: 100%;
+    max-width: 300px; /* Maximum width for each card */
+    text-align: center;
+    padding: 1rem;
+}
+
+.product-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px 8px 0 0;
+    margin-bottom: 1rem;
+}
+
+.product-card h3 {
+    color: #e03c31; /* Deep red color for headings */
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+}
+
+.product-card p {
+    margin-bottom: 1rem;
+}
+
+.product-card a {
+    display: block;
+    background-color: #e03c31; /* Deep red button */
+    color: #fff;
+    padding: 0.5rem;
+    text-decoration: none;
+    border-radius: 0.3rem;
+    font-weight: bold;
+}
+
+.product-card a:hover {
+    background-color: #c42c27; /* Darker red on hover */
+}
+
+/* Footer styles */
+footer {
+    background-color: #000; /* Black background for the footer */
+    color: #fff; /* White text color */
+    text-align: center;
+    padding: 1rem;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+/* Media Queries for responsiveness */
+
+/* Tablet view (min-width: 600px) */
+@media (min-width: 600px) {
+    nav a {
+        font-size: 1rem;
+    }
+
+    header h1 {
+        font-size: 2rem;
+    }
+}
+
+/* Desktop view (min-width: 992px) */
+@media (min-width: 992px) {
+    main {
+        padding: 2rem;
+    }
+
+    section {
+        margin-bottom: 2rem;
+        padding: 2rem;
+    }
+
+    section h2 {
+        font-size: 1.8rem;
+    }
+
+    .product-card {
+        max-width: 350px; /* Slightly larger max-width on larger screens */
+    }
+}
+
+</style>
+<h1>NCO Store</h1>
+<p>Welcome to our store! <br>
+    Unless otherwise noted, all proceeds benefit the New Christian Order, an Oregon 501(c)(10) Corporation.
+    <br><p>
+        Most purchases qualify as tax-deductible donations. 
+    </p>
+</p>
+<main>
+    
+    <section id="store">
+        <div class="product-container">
+            {% for product in products %}
+                <div class="product-card">
+                    <!-- Product Image -->
+                    <img src="{{ product.images[0] }}" alt="{{ product.name }}">
+    
+                    <!-- Product Information -->
+                    <h4>{{ product.name }}</h4>
+                    <p>{{ product.description }}</p>
+                    <p>Price: ${{ product.price }}</p>
+                    <a href="{{ product.buy_url }}">Buy Now</a>
+    
+                    <!-- Debugging Info (only visible in development) -->
+                    <div class="debug-info" style="display: none;">
+                        <p><strong>Image URL:</strong> {{ product.images[0] }}</p>
+                        <p><strong>Buy Link:</strong> {{ product.buy_link }}</p>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+    <p><br><br>
+    
+    </p>
+</main>
+<script>
+   
+</script>
+{% endblock %}

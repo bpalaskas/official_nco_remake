@@ -1,0 +1,165 @@
+{% extends "base.html" %}
+
+{% block content %}
+<style>
+    /* Reset some default styles */
+
+
+/* Main content styles */
+main {
+    padding: 2rem;
+}
+
+/* Mission section styles */
+#mission {
+    background-color: #fff; /* White background for the mission section */
+    border: 1px solid #ddd; /* Light grey border */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    padding: 2rem;
+    margin-bottom: 2rem;
+}
+
+#mission h2 {
+    color: #e03c31; /* Deep red color for headings */
+    margin-bottom: 1rem;
+    font-size: 1.8rem;
+}
+
+#mission p {
+    margin-bottom: 1.5rem;
+}
+
+/* Executives section styles */
+#executives {
+    background-color: #fff; /* White background for the executives section */
+    border: 1px solid #ddd; /* Light grey border */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    padding: 2rem;
+}
+
+#executives h2 {
+    color: #e03c31; /* Deep red color for headings */
+    margin-bottom: 1rem;
+    font-size: 1.8rem;
+}
+
+.executive-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center; /* Center-aligns the cards */
+}
+
+.executive-card {
+    background-color: #fff; /* White background for the card */
+    border: 1px solid #ddd; /* Light grey border */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    width: 100%;
+    max-width: 250px; /* Maximum width for each card */
+    text-align: center;
+    padding: 1rem;
+}
+
+.executive-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 50%; /* Circular profile images */
+    margin-bottom: 1rem;
+}
+
+.executive-card h3 {
+    color: #e03c31; /* Deep red color for names */
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+}
+
+.executive-card p {
+    font-size: 1rem;
+}
+
+/* Footer styles */
+footer {
+    background-color: #000; /* Black background for the footer */
+    color: #fff; /* White text color */
+    text-align: center;
+    padding: 1rem;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+/* Media Queries for responsiveness */
+
+/* Tablet view (min-width: 600px) */
+@media (min-width: 600px) {
+    nav a {
+        font-size: 1rem;
+    }
+
+    header h1 {
+        font-size: 2rem;
+    }
+}
+
+/* Desktop view (min-width: 992px) */
+@media (min-width: 992px) {
+    main {
+        padding: 2rem;
+    }
+
+    section {
+        margin-bottom: 2rem;
+        padding: 2rem;
+    }
+
+    .executive-card {
+        max-width: 300px; /* Slightly larger max-width on larger screens */
+    }
+}
+
+</style>
+<main>
+    <section id="mission">
+        <h2>Our Mission</h2>
+        <p>
+            Our mission at the New Christian Order is to create a network of Christians dedicated to building the kingdom and lifting each other up. NCO is a fraternal organization based on the lodge system. We provide benefits to our members like networking events, expert-led seminars, access to interest-free loans, and of course, brotherhood.
+        </p>
+        <p>
+            We currently have lodges in Austin, Texas; Bend, Oregon; and Wilkes-barre, Pennsylvania. If you are interested in joining (even if you live in a different area), sign up on our Join page and one of our head marshalls will reach out to you.
+        </p>
+    </section>
+
+    <section id="executives">
+        <h2>Meet Our Executives</h2>
+        <div class="executive-container">
+            <!-- Executive 1 -->
+            <div class="executive-card">
+                <img src="{{ url_for('static', filename='jon-curtis.jpg') }}" alt="Jon Curtis">
+                <h3>Jon Curtis</h3>
+                <p>President</p>
+            </div>
+
+            <!-- Executive 2 -->
+            <div class="executive-card">
+                <img src="{{ url_for('static', filename='bleau-jackson.jpg') }}" alt="Bleau Jackson">
+                <h3>Bleau Jackson</h3>
+                <p>Outreach Director</p>
+            </div>
+
+            <!-- Executive 3 -->
+            <div class="executive-card">
+                <img src="{{ url_for('static', filename='ian-harris.jpg') }}" alt="Ian Harris">
+                <h3>Ian Harris</h3>
+                <p>Administrator</p>
+            </div>
+        </div>
+    </section>
+    <div class="general-container">
+        <a href="{{url_for('main.store')}}"><button>Support NCO by visiting our store</button></a>
+    </div>
+    <p><br></p>
+</main>
+{% endblock %}

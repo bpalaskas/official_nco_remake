@@ -1,0 +1,60 @@
+
+
+{% extends "base.html" %}
+
+{% block content %}
+<style>
+    #product {
+    padding: 2rem;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 2rem auto;
+    max-width: 800px;
+}
+
+.product-details {
+    text-align: center;
+}
+
+.product-image {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+
+.buy-button {
+    background-color: #e03c31;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 0.3rem;
+    text-decoration: none;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.buy-button:hover {
+    background-color: #c42c27;
+}
+
+</style>
+<section id="product">
+    {% if product %}
+        <div class="product-details">
+            <img src="{{ url_for('static', filename=product.images[0]) }}" alt="{{ product.name }}" class="product-image">
+            <h1>{{ product.name }}</h1>
+            <p>{{ product.description }}</p>
+            <p>Price: ${{ product.price }}</p>
+            <p>Sizes: {{ product.sizes | join(', ') }}</p>
+            <a href="{{ product.buy_link }}" class="buy-button">Buy Now</a>
+        </div>
+    {% else %}
+        <p>Product not found</p>
+    {% endif %}
+</section>
+{% endblock %}
