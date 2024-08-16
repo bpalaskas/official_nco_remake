@@ -1,60 +1,195 @@
-
-
 {% extends "base.html" %}
 
 {% block content %}
+
 <style>
-    #product {
-    padding: 2rem;
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin: 2rem auto;
-    max-width: 800px;
-}
+    /* Reset some default styles */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
 
-.product-details {
-    text-align: center;
-}
+    body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        color: #333;
+        background-color: #f4f4f4; /* Light grey background for contrast */
+    }
 
-.product-image {
-    width: 100%;
-    max-width: 400px;
-    height: auto;
-    border-radius: 8px;
-    margin-bottom: 1rem;
-}
+    /* Header styles */
+    header {
+        background-color: #000; /* Black background for the header */
+        color: #fff; /* White text color */
+        padding: 1rem;
+    }
 
-.buy-button {
-    background-color: #e03c31;
-    color: #fff;
-    padding: 0.5rem 1rem;
-    border: none;
-    border-radius: 0.3rem;
-    text-decoration: none;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
+    header h1 {
+        margin: 0;
+        font-size: 1.5rem;
+    }
 
-.buy-button:hover {
-    background-color: #c42c27;
-}
+    nav {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-top: 1rem;
+    }
 
+    nav a {
+        color: #fff;
+        text-decoration: none;
+        margin: 0.5rem 1rem;
+        font-weight: bold;
+        font-size: 0.9rem;
+    }
+
+    nav a:hover {
+        color: #e03c31; /* Deep red color on hover */
+    }
+
+    /* Main content styles */
+    main {
+        padding: 1rem;
+    }
+
+    /* Product container styles */
+    .product-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        gap: 1rem;
+        max-width: 600px;
+        margin: 2rem auto;
+    }
+
+    /* Product card styles */
+    .product-card {
+        background-color: #fff; /* White background for the card */
+        border: 1px solid #ddd; /* Light grey border */
+        border-radius: 8px; /* Rounded corners */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+        width: 100%;
+        text-align: center;
+        padding: 2rem;
+    }
+
+    .product-card img {
+        width: 100%;
+        height: auto;
+        border-radius: 8px 8px 0 0;
+        margin-bottom: 1rem;
+    }
+
+    .product-card h3 {
+        color: #e03c31; /* Deep red color for headings */
+        margin-bottom: 0.5rem;
+        font-size: 1.8rem;
+    }
+
+    .product-card p {
+        margin-bottom: 1rem;
+        font-size: 1.1rem;
+    }
+
+    .product-card a {
+        display: inline-block;
+        background-color: #e03c31; /* Deep red button */
+        color: #fff;
+        padding: 0.75rem 1.5rem;
+        text-decoration: none;
+        border-radius: 0.3rem;
+        font-weight: bold;
+        font-size: 1.1rem;
+        margin-top: 1rem;
+    }
+
+    .product-card a:hover {
+        background-color: #c42c27; /* Darker red on hover */
+    }
+
+    /* Footer styles */
+    footer {
+        background-color: #000; /* Black background for the footer */
+        color: #fff; /* White text color */
+        text-align: center;
+        padding: 1rem;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+    }
+
+    /* Media Queries for responsiveness */
+    @media (min-width: 600px) {
+        nav a {
+            font-size: 1rem;
+        }
+
+        header h1 {
+            font-size: 2rem;
+        }
+    }
+
+    @media (min-width: 992px) {
+        main {
+            padding: 2rem;
+        }
+
+        .product-card {
+            max-width: 500px;
+        }
+    }
+    /* Centering the Back to Store button */
+    .back-to-store {
+        display: flex;
+        justify-content: center;
+        margin: 2rem 0;
+    }
+
+    .back-to-store button {
+        padding: 0.75rem 1.5rem;
+        background-color: #e03c31;
+        color: #fff;
+        border: none;
+        border-radius: 0.3rem;
+        font-size: 1.1rem;
+        cursor: pointer;
+    }
+
+    .back-to-store button:hover {
+        background-color: #c42c27;
+    }
 </style>
-<section id="product">
-    {% if product %}
-        <div class="product-details">
-            <img src="{{ url_for('static', filename=product.images[0]) }}" alt="{{ product.name }}" class="product-image">
-            <h1>{{ product.name }}</h1>
-            <p>{{ product.description }}</p>
-            <p>Price: ${{ product.price }}</p>
-            <p>Sizes: {{ product.sizes | join(', ') }}</p>
-            <a href="{{ product.buy_link }}" class="buy-button">Buy Now</a>
+
+<main>
+    <section class="product-container">
+        <div class="product-card">
+                <!-- Product Image -->
+                <img src="{{ product.images[0] }}" alt="{{ product.name }}">
+
+                <!-- Product Information -->
+                <h3>{{ product.name }}</h3>
+                <p>{{ product.description }}</p>
+                <p>Price: ${{ product.price }}</p>
+
+                <!-- Buy Now Button -->
+                <a href="{{ product.buy_url }}">Buy Now</a>
+
+                <!-- Debugging Info (only visible in development) -->
+                <div class="debug-info" style="display: none;">
+                    <p><strong>Image URL:</strong> {{ product.images[0] }}</p>
+                    <p><strong>Buy Link:</strong> {{ product.buy_url }}</p>
+                </div>
         </div>
-    {% else %}
-        <p>Product not found</p>
-    {% endif %}
-</section>
+    </section>
+    <p><br><br></p>
+    <div class="back-to-store">
+        <a href="{{ url_for('main.store') }}">
+            <button>Back to NCO Store</button>
+        </a>
+    </div>
+        <p><p><p><br><br></p></p></p>
+</main>
+
 {% endblock %}

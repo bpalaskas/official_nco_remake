@@ -181,7 +181,7 @@ footer {
                     <h4>{{ product.name }}</h4>
                     <p>{{ product.description }}</p>
                     <p>Price: ${{ product.price }}</p>
-                    <a href="{{ product.buy_url }}">Buy Now</a>
+                    <a href="{{ url_for('main.store_product', id=product.id) }}">Buy Now</a>
     
                     <!-- Debugging Info (only visible in development) -->
                     <div class="debug-info" style="display: none;">

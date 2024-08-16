@@ -19,7 +19,9 @@
             <div class="product-container">
                 <!-- Member Card 1 -->
                 <div class="product-card">
-                    <img src="{{ url_for('static', filename='thethinkingcomputer.png') }}" height="40%" width="auto"alt="The Thinking Computer">
+
+
+                    <img class="member-image" height="90px" width=auto src="{{ url_for('static', filename='thethinkingcomputer.png') }}" alt="The Thinking Computer">
                     <h3>The Thinking Computer</h3>
                     <p>Online Marketing and Technology Consulting</p>
                     <p>Owners: Benjamin Palaskas & Samuel Vierling</p>
@@ -32,21 +34,11 @@
                 </div>
 
                 <!-- Member Card 2 -->
-                <div class="product-card">
-                    <img src="{{ url_for('static', filename='technologyforfamilies.jpg') }}" alt="Technology for Families">
-                    <h3>Technology for Families</h3>
-                    <p>Tech consulting for a biblical internet in the home</p>
-                    <p>Owner: Walter Rice</p>
-                    <div class="social-links">
-                        <a href="https://technologyforfamilies.org/"><i class="fa fa-globe"></i></a>
-                    </div>
-                    <p><hr>
-                    <br></p>
-                </div>
+                
 
                 <!-- Member Card 3 -->
                 <div class="product-card">
-                    <img src="{{ url_for('static', filename='harrisfcs.png') }}" alt="Harris Family Computer Services">
+                    <img class="member-image" src="{{ url_for('static', filename='harrisfcs.png') }}"  alt="Harris Family Computer Services">
                     <h3>Harris Family Computer Services</h3>
                     <p>Manufacturer Service Provider for Starlink, IT work</p>
                     <div class="social-links">
@@ -64,7 +56,7 @@
             <div class="product-container">
                 <!-- Member Card 4 -->
                 <div class="product-card">
-                    <img src="{{ url_for('static', filename='media1.jpg') }}" alt="The French Club">
+                    <img class="member-image" src="{{ url_for('static', filename='frenchclub.webp') }}" alt="The French Club">
                     <h3>The French Club</h3>
                     <p>Filmmaking and Art Collective</p>
                     <p>Owner: Bleau Jackson</p>
@@ -75,12 +67,12 @@
                         <br></p>
                 </div>
                 <div class="product-card">
-                    <img src="{{ url_for('static', filename='loveamerica.webp') }}" alt="The French Club">
+                    <img class="member-image" src="{{ url_for('static', filename='loveamerica.webp') }}" alt="The French Club">
                     <h3>Love, America</h3>
                     <p>LA-based Clothing Brand and Art Collective</p>
                     <p>Owner: Van the Man</p>
                     <div class="social-links">
-                        <a href="https://www.instagram.com/loveamericaloveamerica/"><i class="fab fa-instagram"></i></a>
+                        <a href="https://loveamerica.online/"><i class="fab fa-instagram"></i></a>
                     </div>
                     <p><hr>
                         <br></p>
@@ -94,12 +86,30 @@
             <div class="product-container">
                 <!-- Member Card 5 -->
                 <div class="product-card">
-                    <img src="{{ url_for('static', filename='esthetics1.jpg') }}" alt="Barber Life">
+                    <img class="member-image" src="{{ url_for('static', filename='esthetics1.jpg') }}" alt="Barber Life">
                     <h3>Barber Life</h3>
                     <p>Barbershop in Wilkes-barre PA</p>
                     <p>Owner: Donnell Jackson</p>
                     <div class="social-links">
                         <!-- No social links for this member -->
+                    </div>
+                    <p><hr>
+                        <br></p>
+                </div>
+            </div>
+        </section>
+        <section class="team-section">
+            <h3>Wellness</h3>
+            <div class="product-container">
+                <!-- Member Card 5 -->
+                <div class="product-card">
+                    <img class="member-image" src="{{ url_for('static', filename='alpha-hypnosis.webp') }}" alt="Barber Life">
+                    <h3>Alpha Hypnosis</h3>
+                    <p>Ericksonian Hypnosis practice in Southern Oregon</p>
+                    <p>Owner: Harris the Hypnotist</p>
+                    <div class="social-links">
+                        <a href="https://alpha-hypnosis.com"><i class="fa fa-globe"></i></a>
+
                     </div>
                     <p><hr>
                         <br></p>

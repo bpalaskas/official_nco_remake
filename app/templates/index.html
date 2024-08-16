@@ -1,34 +1,62 @@
 {% extends "base.html" %}
 
 {% block content %}
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        fetch('{{ url_for('main.get_featured_products') }}')
-            .then(response => response.json())
-            .then(data => {
-                const carouselWrapper = document.querySelector('.carousel-wrapper');
-                data.forEach(product => {
-                    const productCard = document.createElement('div');
-                    productCard.classList.add('product-card');
+<style>
+    /* Home section styling */
+#home {
+    text-align: center; /* Center-aligns text and elements within the section */
+    padding: 2rem; /* Adds padding around the content */
+    background-color: #f9f9f9; /* Light background color for contrast */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+    margin: 2rem auto; /* Center the section horizontally with margin */
+    max-width: 800px; /* Maximum width of the section */
+}
 
-                    productCard.innerHTML = `
-                        <img src="${product.images[0]}" alt="${product.name}">
-                        <h3>${product.name}</h3>
-                        <p>${product.description}</p>
-                        <a href="${product.buy_link}">View Product</a>
-                    `;
+/* Heading styling */
+#home h2 {
+    color: #333; /* Dark color for the heading */
+    margin-bottom: 1rem; /* Space below the heading */
+    font-size: 2rem; /* Font size for the heading */
+}
 
-                    carouselWrapper.appendChild(productCard);
-                });
-            })
-            .catch(error => console.error('Error fetching featured products:', error));
-    });
-</script>
+/* Image styling */
+#home img {
+    width: 60%; /* Image width is 60% of its container */
+    height: auto; /* Height adjusts automatically */
+    margin: 1rem 0; /* Margin above and below the image */
+    border-radius: 8px; /* Rounded corners for the image */
+}
+
+/* Paragraph styling */
+#home p {
+    color: #666; /* Medium gray color for text */
+    font-size: 1.1rem; /* Slightly larger font size for readability */
+    margin-bottom: 1.5rem; /* Space below the paragraph */
+}
+
+/* Button styling */
+#home button {
+    background-color: #e03c31; /* Deep red background color */
+    color: #fff; /* White text color */
+    border: none; /* Remove default border */
+    border-radius: 5px; /* Rounded corners for the button */
+    padding: 0.75rem 1.5rem; /* Padding inside the button */
+    font-size: 1rem; /* Font size of the button text */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s ease; /* Smooth transition for background color */
+}
+
+#home button:hover {
+    background-color: #c42c27; /* Darker red on hover */
+}
+</style>
 <main>
     <section id="home">
         <h2>Welcome to the New Christian Order</h2>
+        <img src="{{ url_for('static', filename='red_dove.png') }}" height=90px width=auto alt="New Christian Order Logo">
         <p>A network of Christians putting God back into business and government.</p>
-        <img src="{{ url_for('static', filename='home-image.jpg') }}" alt="Community Image">
+        
         <button>Learn More</button>
     </section>
     <style>
@@ -111,57 +139,190 @@
         background-color: rgba(0, 0, 0, 0.7);
     }
     
+    /* Gallery container styles */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem;
+    justify-content: center;
+    padding: 1rem;
+    margin: auto;
+}
+
+/* Gallery item styles */
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Soft shadow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for hover effects */
+}
+
+.gallery-item:hover {
+    transform: scale(1.05); /* Slight zoom on hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25); /* Enhanced shadow on hover */
+}
+
+/* Image styling */
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the image covers the square area */
+    transition: opacity 0.3s ease; /* Smooth fade effect for hover */
+}
+
+/* Overlay effect (optional) */
+.gallery-item:hover .overlay {
+    opacity: 1;
+}
+
+/* Overlay styling */
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4); /* Dark semi-transparent overlay */
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    text-align: center;
+    padding: 1rem;
+    box-sizing: border-box;
+    border-radius: 12px; /* Match the rounded corners of the item */
+}
+
+.overlay h4 {
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+/* Responsive image sizes */
+@media (min-width: 600px) {
+    .gallery {
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    }
+}
+
+@media (min-width: 992px) {
+    .gallery {
+        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    }
+}
+/* Store section styling */
+/* Store section styling */
+#store {
+    text-align: center; /* Center-aligns text and elements within the section */
+    padding: 2rem; /* Adds padding around the content */
+    background-color: #f4f4f4; /* Light grey background for contrast */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+    margin: 2rem auto; /* Center the section horizontally with margin */
+    max-width: 800px; /* Maximum width of the section */
+}
+
+/* Heading styling */
+#store h2 {
+    color: #333; /* Dark color for the heading */
+    margin-bottom: 1rem; /* Space below the heading */
+    font-size: 2rem; /* Font size for the heading */
+}
+
+/* Product image styling */
+#store img {
+    width: 60%; /* Image width is 60% of its container */
+    height: auto; /* Height adjusts automatically */
+    border-radius: 8px; /* Rounded corners for the image */
+    margin-top: 1rem; /* Space above the image */
+    margin-bottom: 1rem; /* Space below the image */
+}
+
+/* Button styling */
+#store button {
+    background-color: #e03c31; /* Deep red background color */
+    color: #fff; /* White text color */
+    border: none; /* Remove default border */
+    border-radius: 5px; /* Rounded corners for the button */
+    padding: 0.75rem 1.5rem; /* Padding inside the button */
+    font-size: 1rem; /* Font size of the button text */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s ease; /* Smooth transition for background color */
+    margin-top: 1rem; /* Space above the button */
+}
+
+#store button:hover {
+    background-color: #c42c27; /* Darker red on hover */
+}
     </style>
 
 <section id="store">
-    <a href="{{ url_for('main.store') }}"><h2>Our Store</h2></a>
-    <div class="carousel-container">
-        <div class="carousel-wrapper">
-            <!-- Product cards will be dynamically inserted here -->
-        </div>
-        <div class="carousel-nav">
-            <button id="prev">&lt;</button>
-            <button id="next">&gt;</button>
-        </div>
-    </div>
+    <h2>Our Store</h2>
+    <img src="{{ url_for('static', filename='ncotee_bleau.webp') }}" alt="Product Image"><p><br></p>
+    <a href="{{ url_for('main.store') }}"><button>Support NCO</button></a>
 </section>
     
     <section id="about">
+        <div class="gallery">
+            <div class="gallery-item">
+                <img src="{{ url_for('static', filename='bleau_nick.jpg') }}" alt="Member 1">
+            </div>
+            <div class="gallery-item">
+                <img src="{{ url_for('static', filename='jon_jlp.jpg') }}" alt="Member 2">
+            </div>
+            <div class="gallery-item">
+                <img src="{{ url_for('static', filename='jackie_roger.jpg') }}" alt="Member 3">
+            </div>
+            <!-- Add more gallery items as needed -->
+        </div>
+
+<style></style>
+
+
         <h2>About Us</h2>
         <p>Our mission is to create a supportive community of Christian business leaders who inspire and uplift each other.</p>
-        <img src="{{ url_for('static', filename='jon_jlp.jpg') }}" alt="About Us Image">
+        <div class="founder-content">
+            <img src="{{ url_for('static', filename='jon_founder.jpeg') }}" alt="About Us Image">
+            <div class="text-container">
+                <h3>About our founder:</h3>
+                <p>Jon Curtis is the founder of our Christian men's fraternity for American business owners. Drawing on his personal journey of overcoming homelessness, Jon's mission is to uplift fellow brothers in faith and business. He strives to lead by example, both in his professional pursuits and charitable work, with a deep commitment to helping others and strengthening his community through the teachings of Jesus Christ.</p>
+            </div>
+            
+        </div>
     </section>
     
 
     <section id="members">
         <h2>Our Members</h2>
         <p>Meet our members who are making a difference in their industries while staying true to their Christian values.</p>
-        <img src="{{ url_for('static', filename='members-image.jpg') }}" alt="Members Image">
-        <button>Member Directory</button>
+        <a href="{{url_for('main.members')}}"><button>Members Directory</button></a>
     </section>
     
-    
-    <section id="events">
-        <h2>Upcoming Events</h2>
-        <p>Stay tuned for our upcoming events and gatherings that foster both spiritual and professional development.</p>
-        <img src="{{ url_for('static', filename='events-image.jpg') }}" alt="Events Image">
-    </section>
+
     
     <section id="join">
         <h2>Join Us</h2>
         <p>Interested in becoming a member? Fill out the form to join our community and get involved in your local NCO Lodge.</p>
-        <button>Join Now</button>
+        <a href="{{url_for('main.join')}}"></a><button>Join Now</button>
     </section>
     
     <section id="contact">
         <h2>Contact Us</h2>
-        <p>Have questions or want to get in touch? Reach out to us for more information.</p>
-        <img src="{{ url_for('static', filename='contact-image.jpg') }}" alt="Contact Us Image">
+        <p>Have questions or want to get in touch? Reach out to us at   
+            <a href="mailto:newchristianorder@gmail.com">newchristianorder@gmail.com</a>
+        </p>
     </section>
+    <section>
     <div class="general-container">
         <a href="{{url_for('main.store')}}"><button>Support NCO by visiting our store</button></a>
     </div>
-    <p><br></p>
+    <p><p><br></p></p>
+
+    </section>
 </main>
 <script>
     document.addEventListener('DOMContentLoaded', function () {
