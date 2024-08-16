@@ -57,9 +57,57 @@
         <img src="{{ url_for('static', filename='red_dove.png') }}" height=90px width=auto alt="New Christian Order Logo">
         <p>A network of Christians putting God back into business and government.</p>
         
-        <button>Learn More</button>
+        <a href="{{url_for('main.mission')}}"><button>Learn More</button></a>
     </section>
     <style>
+        * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f4f4f4; /* Light grey background for contrast */
+}
+
+/* Header styles */
+header {
+    background-color: #000; /* Black background for the header */
+    color: #fff; /* White text color */
+    padding: 1rem;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0.5rem 1rem;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+nav a:hover {
+    color: #e03c31; /* Deep red color on hover */
+}
+
+/* Main content styles */
+main {
+    padding: 1rem;
+}
         /* Carousel container */
     .carousel-container {
         position: relative;
@@ -307,7 +355,7 @@
     <section id="join">
         <h2>Join Us</h2>
         <p>Interested in becoming a member? Fill out the form to join our community and get involved in your local NCO Lodge.</p>
-        <a href="{{url_for('main.join')}}"></a><button>Join Now</button>
+        <a href="{{url_for('main.join')}}"><button>Join Now</button></a>
     </section>
     
     <section id="contact">

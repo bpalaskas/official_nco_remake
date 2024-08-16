@@ -2,6 +2,54 @@
 
 {% block content %}
 <style>
+    * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f4f4f4; /* Light grey background for contrast */
+}
+
+/* Header styles */
+header {
+    background-color: #000; /* Black background for the header */
+    color: #fff; /* White text color */
+    padding: 1rem;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0.5rem 1rem;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+nav a:hover {
+    color: #e03c31; /* Deep red color on hover */
+}
+
+/* Main content styles */
+main {
+    padding: 1rem;
+}
 #gallery {
     padding: 2rem;
     background-color: #f4f4f4;
